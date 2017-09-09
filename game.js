@@ -3,6 +3,7 @@ var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
+var initialised = false;
 
 var cunt = {
   alive: document.getElementById('cunt'),
@@ -34,6 +35,14 @@ var A = Math.PI * figPhy.radius * figPhy.radius / (10000); // m^2
 var ag = 50;  // m / s^2
 var mouse = {x: 0, y: 0, isDown: false};
 
+var randomSound = function() {
+  if (initialised) {
+    var sound = new Howl({
+      src: ['sfx'+Math.floor(Math.random()*5)+'.mp3']
+    });
+    sound.play();
+  }
+}
 var getMousePosition = function(e) {
   mouse.x = e.pageX - canvas.offsetLeft;
   mouse.y = e.pageY - canvas.offsetTop;
@@ -53,10 +62,6 @@ var mouseUp = function(e) {
     figPhy.velocity.y = (figPhy.position.y - mouse.y) /30;
     figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
   }
-  var sound = new Howl({
-    src: ['sfx'+Math.floor(Math.random()*5)+'.mp3']
-  });
-  sound.play();
 }
 var getTouchPosition = function(e) {
   mouse.x = e.targetTouches[0].pageX - canvas.offsetLeft;
@@ -74,10 +79,6 @@ var touchEnd = function(e) {
   mouse.isDown = false;
   figPhy.velocity.y = (figPhy.position.y - mouse.y) /10;
   figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
-  var sound = new Howl({
-    src: ['sfx'+Math.floor(Math.random()*4)+'.mp3']
-  });
-  sound.play();
 }
 
 canvas.onmousemove = getMousePosition;
