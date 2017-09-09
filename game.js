@@ -53,6 +53,10 @@ var mouseUp = function(e) {
     figPhy.velocity.y = (figPhy.position.y - mouse.y) /30;
     figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
   }
+  var sound = new Howl({
+    src: ['sfx'+Math.floor(Math.random()*5)+'.mp3']
+  });
+  sound.play();
 }
 var getTouchPosition = function(e) {
   mouse.x = e.targetTouches[0].pageX - canvas.offsetLeft;
@@ -70,6 +74,10 @@ var touchEnd = function(e) {
   mouse.isDown = false;
   figPhy.velocity.y = (figPhy.position.y - mouse.y) /10;
   figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
+  var sound = new Howl({
+    src: ['sfx'+Math.floor(Math.random()*4)+'.mp3']
+  });
+  sound.play();
 }
 
 canvas.onmousemove = getMousePosition;
@@ -86,11 +94,6 @@ var reset = function (){
     sprite: figPhy.sprite
   };
   deadFig.push(lastFigPhy);
-  var sound = new Howl({
-    src: ['sfx'+Math.floor(Math.random()*4)+'.mp3']
-  });
-  sound.play();
-
 
   figPhy.spriteSet = ((Math.random() >= 1/3) ? cunt : dick);
   figPhy.position = {x: width/2, y: height*0.25-60};
