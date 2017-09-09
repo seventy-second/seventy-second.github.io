@@ -1,6 +1,7 @@
 /* Burak Kanber */
 var bgm = new Howl({
-  src: ['bgm.mp3']
+  src: ['bgm.mp3'],
+  loop:1
 });
 bgm.play();
 
