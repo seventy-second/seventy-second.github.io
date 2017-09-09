@@ -86,8 +86,10 @@ var reset = function (){
     sprite: figPhy.sprite
   };
   deadFig.push(lastFigPhy);
-  var audio = new Audio('sfx'+Math.floor(Math.random()*4)+'.mp3');
-  audio.play();
+  var sound = new Howl({
+    src: ['sfx'+Math.floor(Math.random()*4)+'.mp3']
+  });
+  sound.play();
 
 
   figPhy.spriteSet = ((Math.random() >= 1/3) ? cunt : dick);
