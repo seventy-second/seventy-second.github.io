@@ -10,6 +10,7 @@ var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 var initialised = false;
+var deathtoll = 0;
 
 var cunt = {
   alive: document.getElementById('cunt'),
@@ -109,6 +110,8 @@ var reset = function (){
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
 
+  deathtoll++;
+  document.getElementById("deathtoll").innerText = "涼薄指數："+deathtoll;
 }
 
 var loop = function() {
