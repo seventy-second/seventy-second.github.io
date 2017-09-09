@@ -61,6 +61,7 @@ var mouseUp = function(e) {
     mouse.isDown = false;
     figPhy.velocity.y = (figPhy.position.y - mouse.y) /30;
     figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
+    randomSound();
   }
 }
 var getTouchPosition = function(e) {
@@ -79,6 +80,7 @@ var touchEnd = function(e) {
   mouse.isDown = false;
   figPhy.velocity.y = (figPhy.position.y - mouse.y) /10;
   figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
+  randomSound();
 }
 
 canvas.onmousemove = getMousePosition;
