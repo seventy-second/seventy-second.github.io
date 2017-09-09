@@ -50,6 +50,9 @@
   <div id="intro" class="overlay" onclick="this.remove()">
     <img src="intro.png">
   </div>
+  <div id="fbnotice" class="overlay" style="display: none;">
+    <img src="fbnotice.png">
+  </div>
   <canvas id="canvas">用個正正常常嘅browser係咪真係咁難？</canvas>
   <div style="display:none;">
     <img id="cunt" src="cunt.png">
@@ -58,5 +61,12 @@
     <img id="dickdead" src="dick-dead.png">
   </div>
   <script src="game.js"></script>
+  <script>
+  function isFacebookApp() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+  }
+    if (isFacebookApp())document.getElementById("fbnotice").style.display = ""
+  </script>
 </body>
 </html>
