@@ -1,4 +1,10 @@
 /* Burak Kanber */
+var bgm = new Howl({
+  src: ['bgm.mp3']
+});
+bgm.play();
+
+
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
