@@ -24,7 +24,8 @@ var figPhy = {
   mass: 2, //kg
   radius: 40, // 1px = 1cm
   restitution: -0.2,
-  spriteSet: cunt
+  spriteSet: cunt,
+  locked: true
 };
 
 var Cd = 0.47;  // Dimensionless
@@ -85,11 +86,15 @@ var reset = function (){
     sprite: figPhy.sprite
   };
   deadFig.push(lastFigPhy);
+  var audio = new Audio('sfx'+Math.floor(Math.random()*4)+'.mp3');
+  audio.play();
 
-  figPhy.spriteSet = ((Math.random() >= 0.5) ? cunt : dick);
+
+  figPhy.spriteSet = ((Math.random() >= 1/3) ? cunt : dick);
   figPhy.position = {x: width/2, y: height*0.25-60};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
+
 }
 
 var loop = function() {
