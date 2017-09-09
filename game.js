@@ -4,11 +4,14 @@ var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 
-var cunt = document.getElementById('cunt');
-var dick = document.getElementById('dick');
-var cuntDead = document.getElementById('cuntdead');
-var dickDead = document.getElementById('dickdead');
-var ktbd = document.getElementById('ktbd');
+var cunt = {
+  alive: document.getElementById('cunt'),
+  dead: document.getElementById('cuntdead')
+};
+var dick = {
+  alive: document.getElementById('dick'),
+  dead: document.getElementById('dickdead')
+};
 
 var frameRate = 1/60; // Seconds
 var frameDelay = frameRate * 1000; // ms
@@ -16,17 +19,13 @@ var loopTimer = false;
 var deadFig = [];
 
 var figPhy = {
-  position: {x: width/2, y: 0},
-  velocity: {x: 10, y: 0},
+  position: {x: width/2, y: height*0.25-60},
+  velocity: {x: 5, y: -5},
   mass: 2, //kg
   radius: 40, // 1px = 1cm
-  restitution: -0.2
+  restitution: -0.2,
+  spriteSet: cunt
 };
-
-var reset = function (){
-  figPhy.position = {x: width/2, y: 0};
-  figPhy.velocity = {x: 10, y: 0};
-}
 
 var Cd = 0.47;  // Dimensionless
 var rho = 1.22; // kg / m^3
@@ -44,6 +43,7 @@ var mouseDown = function(e) {
     mouse.isDown = true;
     figPhy.position.x = mouse.x;
     figPhy.position.y = mouse.y;
+    figPhy.locked = false;
   }
 }
 var mouseUp = function(e) {
@@ -63,6 +63,7 @@ var touchStart = function(e) {
   mouse.isDown = true;
   figPhy.position.x = mouse.x;
   figPhy.position.y = mouse.y;
+  figPhy.locked = false;
 }
 var touchEnd = function(e) {
   mouse.isDown = false;
@@ -78,12 +79,21 @@ canvas.addEventListener('touchmove', getTouchPosition);
 canvas.addEventListener('touchstart', touchStart);
 document.addEventListener('touchend', touchEnd);
 
-context.fillStyle = 'red';
-context.strokeStyle = 'rgba(255, 128, 0, 0.3)';
-context.lineWidth = 5;
+var reset = function (){
+  var lastFigPhy = {
+    position: {x: figPhy.position.x, y: figPhy.position.y},
+    sprite: figPhy.sprite
+  };
+  deadFig.push(lastFigPhy);
+
+  figPhy.spriteSet = ((Math.random() >= 0.5) ? cunt : dick);
+  figPhy.position = {x: width/2, y: height*0.25-60};
+  figPhy.velocity = {x: 0, y: 0};
+  figPhy.locked = true;
+}
 
 var loop = function() {
-  if ( ! mouse.isDown) {
+  if ( ! mouse.isDown && !figPhy.locked) {
     // Do physics
     // Drag force: Fd = -1/2 * Cd * A * rho * v * v
     var Fx = -0.5 * Cd * A * rho * figPhy.velocity.x * figPhy.velocity.x * figPhy.velocity.x / Math.abs(figPhy.velocity.x);
@@ -121,19 +131,36 @@ var loop = function() {
   // Handdle rotation
   if (figPhy.position.y < height/4*2) {
     figPhy.rotation = 0;
-    figPhy.sprite = cunt;
+    figPhy.sprite = figPhy.spriteSet.alive;
   }
   if (figPhy.position.y > height/4*2 && figPhy.position.y < height/4*3) {
     figPhy.rotation = -45;
-    figPhy.sprite = cunt;
+    figPhy.sprite = figPhy.spriteSet.alive;
   }
   if (figPhy.position.y > height/4*3) {
     figPhy.rotation = 0;
-    figPhy.sprite = cuntDead;
+    figPhy.sprite = figPhy.spriteSet.dead;
+  }
+
+  // Handdle death
+  if (figPhy.position.y > height - figPhy.radius -21 && figPhy.velocity.y) {
+    reset();
   }
 
   // Draw the figPhy
   context.clearRect(0,0,width,height);
+  context.fillStyle = 'red';
+  context.strokeStyle = 'rgba(255, 128, 0, 0.3)';
+  context.lineWidth = 5;
+
+  deadFig.forEach(function(figPhy) {
+    context.save();
+    context.translate(figPhy.position.x, figPhy.position.y);
+    context.rotate(figPhy.rotation*Math.PI/180);
+    context.drawImage(figPhy.sprite, -40, -40, 80, 80);
+    context.restore();
+  });
+
   context.save();
   context.translate(figPhy.position.x, figPhy.position.y);
   context.rotate(figPhy.rotation*Math.PI/180);
