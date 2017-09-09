@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <title>愉快上学去</title>
+  <style>
+    * {
+      margin:0;
+      padding:0;
+    }
+    html, body {
+      width:100%;
+      height:100%;
+      overflow: hidden;
+      background: url("ktbd.png") no-repeat bottom, url("floor.png") repeat-x bottom, url("background.png") repeat-x bottom, #333;
+      background-size: auto 75%, auto, auto 100%;
+      background-position: center bottom 60px, center bottom 60px, center bottom 150px;
+    }
+    canvas {
+      display:block;
+    }
+    .overlay {
+      height:100vh;
+      text-align: center;
+    }
+    .overlay>img  {
+      max-height:100vh;
+    }
+    .overlay>p  {
+      font-size:10vh;
+      margin-top: 30vh;
+    }
+    #splash {
+      background: url('splash-bg.png') repeat-x center center;
+      background-size: auto;
+    }
+    #intro {
+      background:#000;
+    }
+  </style>
+</head>
+<body>
+  <div id="splash" class="overlay" onclick="this.remove()" onmouseover="this.remove()">
+    <img src="splash.png">
+  </div>
+  <div id="intro" class="overlay" onclick="this.remove()" onmouseover="this.remove()">
+    <img src="intro.png">
+  </div>
+  <canvas id="canvas">用個正正常常嘅browser係咪真係咁難？</canvas>
+  <div style="display:none;">
+    <img id="cunt" src="cunt.png">
+    <img id="dick" src="dick.png">
+    <img id="cuntdead" src="cunt-dead.png">
+    <img id="dickdead" src="dick-dead.png">
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
