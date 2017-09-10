@@ -104,7 +104,7 @@ var resetFigPhy = function (){
   };
   deadFig.push(lastFigPhy);
 
-  figPhy.spriteSet = ((Math.random() >= 1/3) ? cunt : dick);
+  figPhy.spriteSet = ((Math.random() >= 1/5) ? cunt : dick);
   figPhy.position = {x: width/2, y: height*0.25-120};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
