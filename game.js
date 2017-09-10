@@ -13,6 +13,7 @@ var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight-60;
 
 var initialised = false;
+var forceCunt = false;
 
 /* sprite */
 var cunt = {
@@ -105,6 +106,9 @@ var resetFigPhy = function (){
   deadFig.push(lastFigPhy);
 
   figPhy.spriteSet = ((Math.random() >= 1/5) ? cunt : dick);
+  if (forceCunt) {
+    figPhy.spriteSet = cunt;
+  }
   figPhy.position = {x: width/2, y: height*0.25-120};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;

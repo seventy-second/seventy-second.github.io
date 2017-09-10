@@ -48,14 +48,27 @@
       right: 2vw;
       position: fixed;
     }
+    #mode {
+      background:#000;
+      padding-top: 30vh;
+    }
+    #mode>a {
+      background:#000;
+      color:#fff !important;
+      font-size: 60px;
+    }
   </style>
 </head>
 <body>
   <div id="splash" class="overlay" onclick="this.remove()">
     <img src="splash.png">
   </div>
-  <div id="intro" class="overlay" onclick="this.remove();initialised=true;">
+  <div id="intro" class="overlay" onclick="this.remove()">
     <img src="intro.png">
+  </div>
+  <div id="mode" class="overlay">
+    <a href="#" onclick="this.parentNode.remove();forceCunt=false;initialised=true;">齋老母</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" onclick="this.parentNode.remove();initialised=true;">親子丼</a>
   </div>
   <div id="fbnotice" class="overlay" style="display: none;">
     <img src="fbnotice.png">
