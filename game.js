@@ -74,7 +74,7 @@ var mouseDown = function(e) {
 var mouseUp = function(e) {
   if (e.which == 1) {
     mouse.isDown = false;
-    figPhy.velocity.y = (figPhy.position.y - mouse.y) /30;
+    figPhy.velocity.y = (figPhy.position.y - mouse.y) /10;
     figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
     randomSound();
   }
