@@ -105,7 +105,7 @@ var resetFigPhy = function (){
   };
   deadFig.push(lastFigPhy);
 
-  figPhy.spriteSet = ((Math.random() >= 1/5) ? cunt : dick);
+  figPhy.spriteSet = ((Math.random() >= 1/2) ? cunt : dick);
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
