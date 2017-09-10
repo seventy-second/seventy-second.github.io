@@ -31,7 +31,7 @@ var loopTimer = false;
 var deadFig = [];
 
 var figPhy = {
-  position: {x: width/2, y: height*0.25-60},
+  position: {x: width/2, y: height*0.25-120},
   velocity: {x: 5, y: -5},
   mass: 2, //kg
   radius: 40, // 1px = 1cm
@@ -105,7 +105,7 @@ var resetFigPhy = function (){
   deadFig.push(lastFigPhy);
 
   figPhy.spriteSet = ((Math.random() >= 1/3) ? cunt : dick);
-  figPhy.position = {x: width/2, y: height*0.25-60};
+  figPhy.position = {x: width/2, y: height*0.25-120};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
 
