@@ -109,7 +109,7 @@ var resetFigPhy = function (){
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
-  figPhy.position = {x: width/2, y: height*0.25-120};
+  figPhy.position = {x: width/2, y: height*0.25-90};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
 
