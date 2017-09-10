@@ -25,6 +25,10 @@ var dick = {
   alive: document.getElementById('dick'),
   dead: document.getElementById('dickdead')
 };
+var lotus = {
+  alive: document.getElementById('lotus'),
+  dead: document.getElementById('lotusdead')
+};
 
 /* settings */
 var frameRate = 1/60; // Seconds
@@ -107,6 +111,7 @@ var respawn = function (){
   deadFig.push(lastFigPhy);
 
   figPhy.spriteSet = ((Math.random() >= 1/2) ? cunt : dick);
+  figPhy.spriteSet = ((Math.random() >= 1/20) ? figPhy.spriteSet : lotus);
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
