@@ -122,6 +122,14 @@ var respawn = function (){
 
   deathtoll++;
   document.getElementById("deathtoll").innerText = "涼薄指數："+deathtoll;
+
+  if ( (deathtoll % 100 == 0) || deathtoll == 10 || (deathtoll == 50)) {
+    var sound = new Howl({
+      src: ['sfxHundred.mp3'],
+      volume: 0.9
+    });
+    sound.play();
+  }
   document.getElementById("price").innerText = "樓價：$"+(19100000-((deathtoll*1000)+Math.floor(Math.random()*999)));
 }
 
