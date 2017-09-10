@@ -46,7 +46,7 @@ var mouse = {x: 0, y: 0, isDown: false};
 var randomSound = function() {
   if (initialised) {
     var sound = new Howl({
-      src: ['sfx'+Math.floor(Math.random()*7)+'.mp3']
+      src: ['sfx'+Math.floor(Math.random()*8)+'.mp3']
     });
     sound.play();
   }
