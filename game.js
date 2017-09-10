@@ -32,7 +32,7 @@ var loopTimer = false;
 var deadFig = [];
 
 var figPhy = {
-  position: {x: width/2, y: height*0.25-90},
+  position: {x: width/3-15, y: height*0.25-90},
   velocity: {x: 5, y: -5},
   mass: 2, //kg
   radius: 40, // 1px = 1cm
@@ -109,7 +109,7 @@ var resetFigPhy = function (){
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
-  figPhy.position = {x: width/2, y: height*0.25-90};
+  figPhy.position = {x: width/3-15, y: height*0.25-90};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
 
