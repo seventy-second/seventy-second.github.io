@@ -99,7 +99,7 @@ var touchEnd = function(e) {
   figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
   randomSound();
 }
-var resetFigPhy = function (){
+var respawn = function (){
   var lastFigPhy = {
     position: {x: figPhy.position.x, y: figPhy.position.y},
     sprite: figPhy.sprite
@@ -181,7 +181,7 @@ var loop = function() {
 
   // Handdle death
   if (figPhy.position.y > height - figPhy.radius -21 && figPhy.velocity.y) {
-    resetFigPhy();
+    respawn();
   }
 
   // Reset context
