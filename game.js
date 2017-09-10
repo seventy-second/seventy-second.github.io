@@ -1,18 +1,20 @@
-/* Burak Kanber */
+/* bgm */
 var bgm = new Howl({
   src: ['bgm.mp3'],
+  volume: 0.5,
   loop:1
 });
 bgm.play();
 
-
+/* setup canvas */
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight-60;
-var initialised = false;
-var deathtoll = 0;
 
+var initialised = false;
+
+/* sprite */
 var cunt = {
   alive: document.getElementById('cunt'),
   dead: document.getElementById('cuntdead')
@@ -22,6 +24,7 @@ var dick = {
   dead: document.getElementById('dickdead')
 };
 
+/* settings */
 var frameRate = 1/60; // Seconds
 var frameDelay = frameRate * 1000; // ms
 var loopTimer = false;
@@ -43,10 +46,14 @@ var A = Math.PI * figPhy.radius * figPhy.radius / (10000); // m^2
 var ag = 50;  // m / s^2
 var mouse = {x: 0, y: 0, isDown: false};
 
+var deathtoll = 0;
+
+/* Define handler */
 var randomSound = function() {
   if (initialised) {
     var sound = new Howl({
-      src: ['sfx'+Math.floor(Math.random()*8)+'.mp3']
+      src: ['sfx'+Math.floor(Math.random()*8)+'.mp3'],
+      volume: 0.9
     });
     sound.play();
   }
@@ -90,16 +97,7 @@ var touchEnd = function(e) {
   figPhy.velocity.x = (figPhy.position.x - mouse.x) / 30;
   randomSound();
 }
-
-canvas.onmousemove = getMousePosition;
-canvas.onmousedown = mouseDown;
-document.onmouseup = mouseUp;
-
-canvas.addEventListener('touchmove', getTouchPosition);
-canvas.addEventListener('touchstart', touchStart);
-document.addEventListener('touchend', touchEnd);
-
-var reset = function (){
+var resetFigPhy = function (){
   var lastFigPhy = {
     position: {x: figPhy.position.x, y: figPhy.position.y},
     sprite: figPhy.sprite
@@ -115,6 +113,16 @@ var reset = function (){
   document.getElementById("deathtoll").innerText = "涼薄指數："+deathtoll;
 }
 
+/* mouse/touch event hook */
+canvas.onmousemove = getMousePosition;
+canvas.onmousedown = mouseDown;
+document.onmouseup = mouseUp;
+
+canvas.addEventListener('touchmove', getTouchPosition);
+canvas.addEventListener('touchstart', touchStart);
+document.addEventListener('touchend', touchEnd);
+
+/* canvas update loop */
 var loop = function() {
   if ( ! mouse.isDown && !figPhy.locked) {
     // Do physics
@@ -167,15 +175,16 @@ var loop = function() {
 
   // Handdle death
   if (figPhy.position.y > height - figPhy.radius -21 && figPhy.velocity.y) {
-    reset();
+    resetFigPhy();
   }
 
-  // Draw the figPhy
+  // Reset context
   context.clearRect(0,0,width,height);
   context.fillStyle = 'red';
   context.strokeStyle = 'rgba(255, 128, 0, 0.3)';
   context.lineWidth = 5;
 
+  // Draw the deagFigs
   deadFig.forEach(function(figPhy) {
     context.save();
     context.translate(figPhy.position.x, figPhy.position.y);
@@ -184,6 +193,7 @@ var loop = function() {
     context.restore();
   });
 
+  // Draw the figPhy
   context.save();
   context.translate(figPhy.position.x, figPhy.position.y);
   context.rotate(figPhy.rotation*Math.PI/180);
@@ -199,4 +209,6 @@ var loop = function() {
     context.closePath();
   }
 }
+
+/* canvas update loop hook */
 loopTimer = setInterval(loop, frameDelay);
