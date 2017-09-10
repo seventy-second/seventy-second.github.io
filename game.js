@@ -14,7 +14,7 @@ var height = canvas.height = window.innerHeight-60;
 
 var initialised = false;
 var forceCunt = false;
-var sfxN = 10;
+var sfxN = 11;
 
 /* sprite */
 var cunt = {
@@ -39,9 +39,9 @@ var deadFig = [];
 var figPhy = {
   position: {x: width/3-15, y: height*0.25-90},
   velocity: {x: 5, y: -5},
-  mass: 2, //kg
+  mass: 3, //kg
   radius: 40, // 1px = 1cm
-  restitution: -2,
+  restitution: -0.5,
   spriteSet: cunt,
   locked: true
 };
@@ -49,7 +49,7 @@ var figPhy = {
 var Cd = 0.47;  // Dimensionless
 var rho = 1.22; // kg / m^3
 var A = Math.PI * figPhy.radius * figPhy.radius / (10000); // m^2
-var ag = 50;  // m / s^2
+var ag = 30;  // m / s^2
 var mouse = {x: 0, y: 0, isDown: false};
 
 var deathtoll = 0;
@@ -158,7 +158,7 @@ var loop = function() {
   }
   // Handle enviorment collisions
   if (figPhy.position.y > height - figPhy.radius -20) {
-    figPhy.velocity.y *= figPhy.restitution;
+    figPhy.velocity.y *= figPhy.restitution*20;
     figPhy.velocity.x *= -figPhy.restitution;
     figPhy.position.y = height - figPhy.radius -20 ;
   }
