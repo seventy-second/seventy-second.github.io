@@ -26,6 +26,7 @@
     .overlay {
       height:100vh;
       text-align: center;
+      background:rgba(0,0,0,0.9);
     }
     .overlay>img  {
       max-height:100vh;
@@ -33,13 +34,6 @@
     .overlay>p  {
       font-size:10vh;
       margin-top: 30vh;
-    }
-    #splash {
-      background: url('splash-bg.png') repeat-x center center;
-      background-size: auto;
-    }
-    #intro {
-      background:#000;
     }
     #deathtoll {
       font-size: 5vw;
@@ -49,14 +43,20 @@
       position: fixed;
     }
     #mode {
-      background:#000;
       padding-top: 30vh;
+      font-size: 60px;
+      color:#fff;
     }
     #mode>a {
-      background:#000;
-      color:#fff !important;
-      text-decoration: none !important;
-      font-size: 60px;
+      color:#fff;
+      text-decoration: none;
+      background:rgba(255, 255, 255, 0.2);
+      display:inline-block;
+      padding:5px 1ch;
+    }
+    #mode>a:hover {
+      background:rgba(255, 255, 255, 0.5);
+      text-decoration: none;
     }
   </style>
 </head>
@@ -68,7 +68,7 @@
     <img src="intro.png">
   </div>
   <div id="mode" class="overlay">
-    <a href="#" onclick="this.parentNode.remove();forceCunt=true;initialised=true;">齋老母</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" onclick="this.parentNode.remove();forceCunt=true;initialised=true;">齋老母</a> or
     <a href="#" onclick="this.parentNode.remove();initialised=true;">親子丼</a>
   </div>
   <div id="fbnotice" class="overlay" style="display: none;">
