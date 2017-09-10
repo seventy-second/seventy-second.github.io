@@ -14,6 +14,7 @@ var height = canvas.height = window.innerHeight-60;
 
 var initialised = false;
 var forceCunt = false;
+var sfxN = 9;
 
 /* sprite */
 var cunt = {
@@ -53,7 +54,7 @@ var deathtoll = 0;
 var randomSound = function() {
   if (initialised) {
     var sound = new Howl({
-      src: ['sfx'+Math.floor(Math.random()*8)+'.mp3'],
+      src: ['sfx'+Math.floor(Math.random()*sfxN)+'.mp3'],
       volume: 0.9
     });
     sound.play();
