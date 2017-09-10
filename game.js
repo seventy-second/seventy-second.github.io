@@ -9,7 +9,7 @@ bgm.play();
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var width = canvas.width = window.innerWidth;
-var height = canvas.height = window.innerHeight;
+var height = canvas.height = window.innerHeight-60;
 var initialised = false;
 var deathtoll = 0;
 
