@@ -122,7 +122,7 @@ var respawn = function (){
 
   deathtoll++;
   document.getElementById("deathtoll").innerText = "涼薄指數："+deathtoll;
-  document.getElementById("price").innerText = "樓價：$"+(19100000-((deathtoll*1000)+Math.floor(Math.random()*999)));
+  document.getElementById("price").innerText = "<br>樓價：$"+(19100000-((deathtoll*1000)+Math.floor(Math.random()*999)));
 }
 
 /* mouse/touch event hook */
