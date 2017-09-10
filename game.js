@@ -32,7 +32,7 @@ var loopTimer = false;
 var deadFig = [];
 
 var figPhy = {
-  position: {x: width/2, y: height*0.25-120},
+  position: {x: width/2, y: height*0.25-90},
   velocity: {x: 5, y: -5},
   mass: 2, //kg
   radius: 40, // 1px = 1cm
