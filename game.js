@@ -115,6 +115,7 @@ var respawn = function (){
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
+  figPhy.sprite = figPhy.spriteSet.alive;
   figPhy.position = {x: width/3-15, y: height*0.25-90};
   figPhy.velocity = {x: 0, y: 0};
   figPhy.locked = true;
