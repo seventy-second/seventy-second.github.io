@@ -36,7 +36,7 @@ var figPhy = {
   velocity: {x: 5, y: -5},
   mass: 2, //kg
   radius: 40, // 1px = 1cm
-  restitution: -0.2,
+  restitution: -2,
   spriteSet: cunt,
   locked: true
 };
