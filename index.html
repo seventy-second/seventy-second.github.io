@@ -36,16 +36,13 @@
       font-size:10vh;
       margin-top: 30vh;
     }
-    #deathtollContainer {
-      font-size: 30px;
+    #deathtoll {
+      font-size: 60px;
       z-index: 10;
       top: 1vh;
       right: 2vw;
       position: fixed;
       text-align: right;
-    }
-    #deathtoll {
-      font-size: 60px;
     }
     #price {
       font-size: 30px;
@@ -80,18 +77,18 @@
     <img src="intro.png">
   </div>
   <div id="mode" class="overlay">
-    <a href="#" onclick="this.parentNode.remove();forceCunt=true;ga('send', 'event', 'choice', 'CuntOnly');initialised=true;false;">齋老母</a> or
-    <a href="#" onclick="this.parentNode.remove();ga('send', 'event', 'choice', 'DonDonYa');initialised=true;false;">親子丼</a>
+    <p>
+      <a href="#" onclick="this.parentNode.remove();forceCunt=true;ga('send', 'event', 'choice', 'CuntOnly');initialised=true;false;">齋老母</a> or
+      <a href="#" onclick="this.parentNode.remove();ga('send', 'event', 'choice', 'DonDonYa');initialised=true;false;">親子丼</a>
+    </p>
+    <p class="anouncement">承蒙 13046 位學長支持，全港累積指數報 652 萬，持續增加中！</p>
   </div>
   <div id="fbnotice" class="overlay" style="display: none;">
     <img src="fbnotice.png">
   </div>
   <canvas id="canvas"><span class="canvasSupportMissing">用個正正常常嘅browser係咪真係咁難？</span></canvas>
-  <div id="deathtollContainer">
-    承蒙 7829 位學長支持，全港累積指數報 3914500，持續增加中！<br>
-    <span id="deathtoll">涼薄指數：-</span>
-  </div>
-  <div id="price"><br>樓價：$19100000</div>
+  <div id="deathtoll">涼薄指數：-</div>
+  <div id="price">樓價：$19100000</div>
   <div style="display:none;">
     <img id="cunt" src="cunt.png">
     <img id="cuntdead" src="cunt-dead.png">
