@@ -14,7 +14,7 @@ var height = canvas.height = window.innerHeight-60;
 
 var initialised = false;
 var forceCunt = false;
-var sfxN = 11;
+var sfxN = 12;
 
 /* sprite */
 var cunt = {
