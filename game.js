@@ -130,7 +130,11 @@ var respawn = function (){
     });
     sound.play();
   }
-  document.getElementById("price").innerText = "樓價：$"+(19100000-((deathtoll*1000)+Math.floor(Math.random()*999)));
+  if (deathtoll<50) {
+    document.getElementById("price").innerText = "樓價：$"+(19100000-((deathtoll*302000)+Math.floor(Math.random()*301999)));
+  }else{
+    document.getElementById("price").innerText = "樓價：$"+(4000000-((deathtoll*500)+Math.floor(Math.random()*499)));
+  }
 }
 
 /* mouse/touch event hook */
