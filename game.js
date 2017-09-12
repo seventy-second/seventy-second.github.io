@@ -126,7 +126,7 @@ var respawn = function (){
   figPhy.locked = true;
 
   deathtoll++;
-  document.getElementById("deathtoll").innerText = "涼薄指數："+deathtoll;
+  document.getElementById("deathtoll").innerText = "凉薄指数："+deathtoll;
 
   if ( (deathtoll % 100 == 0) || deathtoll == 10 || (deathtoll == 50)) {
     var sound = new Howl({
@@ -136,9 +136,9 @@ var respawn = function (){
     sound.play();
   }
   if (deathtoll<50) {
-    document.getElementById("price").innerText = "樓價：$"+(19100000-((deathtoll*302000)+Math.floor(Math.random()*301999)));
+    document.getElementById("price").innerText = "楼价：$"+(19100000-((deathtoll*302000)+Math.floor(Math.random()*301999)));
   }else{
-    document.getElementById("price").innerText = "樓價：$"+(4000000-((deathtoll*500)+Math.floor(Math.random()*499)));
+    document.getElementById("price").innerText = "楼价：$"+(4000000-((deathtoll*500)+Math.floor(Math.random()*499)));
   }
 }
 
