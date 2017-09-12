@@ -29,6 +29,10 @@ var lotus = {
   alive: document.getElementById('lotus'),
   dead: document.getElementById('lotusdead')
 };
+var duo = {
+  alive: document.getElementById('duo'),
+  dead: document.getElementById('duodead')
+};
 
 /* settings */
 var frameRate = 1/60; // Seconds
@@ -112,6 +116,7 @@ var respawn = function (){
 
   figPhy.spriteSet = ((Math.random() >= 1/2) ? cunt : dick);
   figPhy.spriteSet = ((Math.random() >= 1/20) ? figPhy.spriteSet : lotus);
+  figPhy.spriteSet = ((Math.random() >= 1/10) ? figPhy.spriteSet : duo);
   if (forceCunt) {
     figPhy.spriteSet = cunt;
   }
